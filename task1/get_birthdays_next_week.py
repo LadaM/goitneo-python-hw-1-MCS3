@@ -3,13 +3,9 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 
 # Data format users = {"name": "Bill Gates", "birthday": datetime(1955, 10, 28)}
-# Output format birthdays_next_week = {'Monday': ['Bill Gates'], 'Thursday': ['Jan Koum']} 
+# Output format  Monday: Bill Gates, Jill Valentine
+#                Friday: Kim Kardashian, Jan Koum
 #   sorted by weekday Mo -> Fr, Sa & Su are moved to the coming Monday
-# Algo:
-#   for each user in the list
-#       - if their BD is during next 7 days -> store the weekday & user name
-#       - map WD number to WD name, special case - Sa & Su map to Mo
-#   return the dict weekday_name : [users]
 def get_birthdays_next_week(users):
     users_by_weekday = defaultdict(list)
     today = datetime.now().date()
