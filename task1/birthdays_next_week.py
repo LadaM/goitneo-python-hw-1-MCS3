@@ -39,4 +39,4 @@ def get_birthdays_per_week(users):
 
     # sorting the result by the day of the week => Mo will always come first
     for d, n in sorted(users_by_weekday.items()):
-        print(f"{calendar.day_name[d]}: {', '.join(n)}")
+        print(f"{calendar.day_name[d] + ':':<10} {', '.join(n)}")
