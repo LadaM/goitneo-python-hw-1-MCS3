@@ -17,24 +17,24 @@ def main():
                     print("Contact added")
                 except ValueError:
                     print(f"Expecting command in form {COMMANDS.get('add')}")
+                except DuplicateEntry:
+                    print(f"We alreay have a contact with name {name}")
             elif command.startswith("change"):
                 try:
                     _, name, phone = command.split(' ')
                     update_contact(name, phone)
                     print("Contact updated")
                 except ValueError:
-                    print(
-                        f"Expecting command in form {COMMANDS.get('update')}")
+                    print(f"Expecting command in form {COMMANDS.get('update')}")
                 except ValueNotFound:
                     print(f"No contact for name {name} found")
             elif command.startswith("phone"):
                 try:
                     _, name = command.split(' ')
-                    phone = show_contact(name)
+                    phone = get_phone(name)
                     print(phone)
                 except ValueError:
-                    print(
-                        f"Expecting command in form {COMMANDS.get('phone')}")
+                    print(f"Expecting command in form {COMMANDS.get('phone')}")
                 except ValueNotFound:
                     print(f"No contact for name {name} found")
             elif command.startswith("all"):
@@ -46,7 +46,7 @@ def main():
                     # if the file is empty there are no contacts to show
                     print("We haven't stored any contacts yet")
             elif command in ["close", "exit"]:
-                print("Good bye!")
+                print("Goodbye!")
                 break
             else:
                 raise InvalidCommandException
@@ -63,20 +63,28 @@ class InvalidCommandException(Exception):
 class ValueNotFound(Exception):
     pass
 
+class DuplicateEntry(Exception):
+    pass
+
 file_path = Path.cwd().joinpath(CONTACTS_FILE)
 
 def add_contact(name: str, phone: str):
     try:
-        data_list = get_contacts()
+        contacts = get_contacts()
     except FileNotFoundError:
         # if there is no file yet or it is empty, we just create one and add contact
-        data_list = []
+        contacts = []
 
+    for c in contacts:
+        # if we already have a name in our contact list, we don't add it again
+        n = c.get("name")
+        if n == name:
+            raise DuplicateEntry
+    
     contact = {"name": name, "phone": phone}
-    data_list.append(contact)
-
+    contacts.append(contact)
     with open(file_path, 'w') as json_file:
-        json.dump(data_list, json_file, indent=4)
+        json.dump(contacts, json_file, indent=4)
 
 def update_contact(name, phone):
     try:
@@ -94,7 +102,7 @@ def update_contact(name, phone):
         # if the file is empty, our name isn't in the file
         raise ValueNotFound
 
-def show_contact(name):
+def get_phone(name):
     try:
         contacts = get_contacts()
         for c in contacts:

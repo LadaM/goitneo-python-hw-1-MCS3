@@ -9,8 +9,9 @@ test_1 = [
     {"name": "Marry Poppins", "birthday": datetime.today() + timedelta(days=6)},
 ]
 
-# 10 birthdays in next 10 days, expect 7 selected to test that today + 7 days isn't included
-test_2 = [ {"name": f"Name-{i}",  "birthday" : datetime.now() + timedelta(days=i)} for i in range(10)]
+# 10 birthdays in next 10 days, expect 7 selected to test that today + 7 days isn't included  # noqa: E501
+test_2 = [ {"name": f"Name-{i}",  "birthday" : datetime.now() + timedelta(days=i)} 
+          for i in range(10)]
 get_birthdays_next_week(test_2)
 
 # generating 100 random users

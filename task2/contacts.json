@@ -1,1 +1,30 @@
-{"name": "mrright", "phone": "555-77-112"}
+[
+    {
+        "name": "marry",
+        "phone": "9812742"
+    },
+    {
+        "name": "justin",
+        "phone": "00000"
+    },
+    {
+        "name": "martin",
+        "phone": "888888888"
+    },
+    {
+        "name": "maria",
+        "phone": "9074629134"
+    },
+    {
+        "name": "sting",
+        "phone": "88888"
+    },
+    {
+        "name": "sarah",
+        "phone": "9035734"
+    },
+    {
+        "name": "jeff",
+        "phone": "987215"
+    }
+]
