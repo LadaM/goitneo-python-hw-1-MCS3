@@ -78,7 +78,6 @@ def add_contact(name: str, phone: str):
     with open(file_path, 'w') as json_file:
         json.dump(data_list, json_file, indent=4)
 
-
 def update_contact(name, phone):
     try:
         contacts = get_contacts()
@@ -115,7 +114,6 @@ def get_contacts():
             return data_list
     else:
         raise FileNotFoundError
-
 
 if __name__ == "__main__":
     main()
