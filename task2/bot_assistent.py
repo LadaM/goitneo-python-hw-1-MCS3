@@ -3,6 +3,18 @@ from constants import COMMANDS
 class InvalidCommandException(Exception):
     pass
 
+def add_contact(command):
+    pass
+
+def update_contact(command):
+    pass
+
+def show_all_contacts(command):
+    pass
+
+def show_contact(command):
+    pass
+
 def main():
     print("Welcome to the assitant bot!")
     while True:
@@ -10,18 +22,16 @@ def main():
         try:
             if command == "hello":
                 print("How can I help you?")
-            elif "add" in command:
-                #TODO add function add_contact
+            elif command.startswith("add"):
+                add_contact(command)
                 print("Contact added")
-            elif "change" in command:
-                # TODO add func update_contact
+            elif command.startswith("change"):
+                update_contact(command)
                 print("Contact updated.")
-            elif "phone" in command:
-                # TODO func getting and showing phone number of the person or error
-                pass
+            elif command.startswith("phone"):
+                show_contact(command)
             elif command.startswith("all"):
-                # TODO function retrieving and presenting all saved contacts
-                pass
+               show_all_contacts()
             elif command in ["close", "exit"]:
                 print("Good bye!")
                 break
