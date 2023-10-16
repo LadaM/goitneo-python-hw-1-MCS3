@@ -2,10 +2,11 @@ import calendar
 from datetime import datetime, timedelta
 from collections import defaultdict
 
-# Data format users = {"name": "Bill Gates", "birthday": datetime(1955, 10, 28)}
+# Data input format users = {"name": "Bill Gates", "birthday": datetime(1955, 10, 28)}
 # Output format  Monday: Bill Gates, Jill Valentine
 #                Friday: Kim Kardashian, Jan Koum
 #   sorted by weekday Mo -> Fr, Sa & Su are moved to the coming Monday
+# The funciton won't handle the birthday on 29th of Feb
 def get_birthdays_next_week(users):
     users_by_weekday = defaultdict(list)
     today = datetime.now().date()
