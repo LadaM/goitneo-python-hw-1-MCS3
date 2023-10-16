@@ -1,20 +1,5 @@
 from constants import COMMANDS
 
-class InvalidCommandException(Exception):
-    pass
-
-def add_contact(command):
-    pass
-
-def update_contact(command):
-    pass
-
-def show_all_contacts(command):
-    pass
-
-def show_contact(command):
-    pass
-
 def main():
     print("Welcome to the assitant bot!")
     while True:
@@ -41,6 +26,21 @@ def main():
             print(("Ivalid command recieved. Accepted commands are:\n{}"
                    .format('\n'.join(['- ' + s for s in COMMANDS]))))
             continue
+
+class InvalidCommandException(Exception):
+    pass
+
+def add_contact(command):
+    pass
+
+def update_contact(command):
+    pass
+
+def show_all_contacts(command):
+    pass
+
+def show_contact(command):
+    pass
 
 if __name__ == "__main__":
     main()
