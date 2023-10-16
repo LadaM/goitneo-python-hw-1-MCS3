@@ -7,7 +7,7 @@ from collections import defaultdict
 #                Friday: Kim Kardashian, Jan Koum
 #   sorted by weekday Mo -> Fr, Sa & Su are moved to the coming Monday
 # The funciton won't handle the birthday on 29th of Feb
-def get_birthdays_next_week(users):
+def get_birthdays_per_week(users):
     users_by_weekday = defaultdict(list)
     today = datetime.now().date()
     curr_weekday = today.weekday()
