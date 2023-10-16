@@ -1,4 +1,4 @@
-from get_birthdays_next_week import get_birthdays_per_week
+from birthdays_next_week import get_birthdays_per_week
 from datetime import datetime, timedelta
 from faker import Faker 
 
