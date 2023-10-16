@@ -1,2 +1,11 @@
-COMMANDS = ["hello", "all", "close", "exit",
-            "add <name> <phone>", "phone <username>", "change <username> <phone>"]
+COMMANDS = {
+    "hello": "hello",
+    "all": "all",
+    "exit": "exit",
+    "close": "close",
+    "add": "add <name> <phone>",
+    "update": "change <username> <phone>",
+    "phone":   "phone <username>",
+}
+
+CONTACTS_FILE = "contacts.json"
